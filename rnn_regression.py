@@ -6,16 +6,16 @@ import matplotlib.pyplot as plt
 TIME_STEP = 10  # rnn time step
 INPUT_SIZE = 1  # rnn input size
 CELL_SIZE = 32  # rnn cell size
-LR = 0.02  # learning rate
+LR = 0.01  # learning rate
 
-# show data
-steps = np.linspace(0, np.pi * 2, 100, dtype=np.float32)
-x_np = np.sin(steps)
-y_np = np.cos(steps)  # float32 for converting torch FloatTensor
-plt.plot(steps, y_np, 'r-', label='target (cos)')
-plt.plot(steps, x_np, 'b-', label='input (sin)')
-plt.legend(loc='best')
-plt.show()
+# # show data
+# steps = np.linspace(0, np.pi * 2, 100, dtype=np.float32)
+# x_np = np.sin(steps)
+# y_np = np.cos(steps)  # float32 for converting torch FloatTensor
+# plt.plot(steps, y_np, 'r-', label='target (cos)')
+# plt.plot(steps, x_np, 'b-', label='input (sin)')
+# plt.legend(loc='best')
+# plt.show()
 
 tf_x = tf.placeholder(tf.float32, [None, TIME_STEP, INPUT_SIZE])  # shape(batch, 5, 1)
 tf_y = tf.placeholder(tf.float32, [None, TIME_STEP, INPUT_SIZE])  # input y
@@ -42,7 +42,7 @@ sess.run(tf.global_variables_initializer())  # initialize var in graph
 plt.figure(1, figsize=(12, 5))
 plt.ion()  # continuously plot
 
-for step in range(60):
+for step in range(100):
     start, end = step * np.pi, (step + 1) * np.pi  # time range
     # use sin predicts cos
     steps = np.linspace(start, end, TIME_STEP)
