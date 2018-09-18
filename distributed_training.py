@@ -4,7 +4,7 @@ import numpy as np
 import os, shutil
 
 
-TRAINING = False
+TRAINING = True
 
 # training data
 x = np.linspace(-1, 1, 100)[:, np.newaxis]
